@@ -1,4 +1,4 @@
-# Typed sigaa schedule
+# Sigaa Scheduler
 
 Implementação da estrutura de dados do horário do sigaa em rust, onde tudo é muito bem tipado, lindo e **MUITO** verboso.
 
