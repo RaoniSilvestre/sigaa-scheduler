@@ -19,4 +19,4 @@ Implementação da estrutura de dados do horário do sigaa em rust, onde tudo é
 
 ## Site
 
-https://raonisilvestre.github.io/typed-sigaa-schedule/
+https://raonisilvestre.github.io/sigaa-scheduler/
