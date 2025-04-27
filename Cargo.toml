@@ -6,3 +6,10 @@ edition = "2024"
 [dependencies]
 regex = "1.10.6"
 serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.128"
+yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
+yew-autoprops = "0.4.1"
+gloo-storage = "0.3.0"
+gloo = "0.11.0"
+wasm-bindgen = "0.2.93"
+web-sys = "0.3.70"

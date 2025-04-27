@@ -1,5 +1,6 @@
-use class::Disciplina;
 use yew::prelude::*;
+
+use crate::schedule::Disciplina;
 
 #[derive(Properties, PartialEq)]
 pub struct DisciplineButtonProps {

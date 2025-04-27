@@ -1,12 +1,12 @@
+use crate::schedule::{Disciplina, Schedule};
+
 use super::super::atoms::github_link::GithubLink;
 use super::super::atoms::total_hour::TotalHourComponent;
 use super::discipline_list::DisciplineListComponent;
 use super::form::*;
 use super::schedule::ScheduleComponent;
-use class::Disciplina;
 use gloo::console::log;
 use gloo_storage::{LocalStorage, Storage};
-use schedule::Schedule;
 use std::ops::Deref;
 use yew::*;
 

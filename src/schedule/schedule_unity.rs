@@ -1,6 +1,4 @@
-use super::ScheduleUnity;
-use class::Disciplina;
-use stf::SigaaTime;
+use super::{Disciplina, ScheduleUnity, SigaaTime};
 
 impl ScheduleUnity {
     /// Cria uma nova instância de `ScheduleUnity`.
@@ -14,10 +12,7 @@ impl ScheduleUnity {
     ///
     /// Retorna uma nova instância de `ScheduleUnity`.
     pub fn new(horario: SigaaTime, disciplina: Option<Disciplina>) -> ScheduleUnity {
-        ScheduleUnity {
-            horario,
-            disciplina,
-        }
+        ScheduleUnity { horario, disciplina }
     }
 
     pub fn update(&mut self, disciplina: Option<Disciplina>) {

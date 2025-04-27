@@ -1,6 +1,6 @@
-use schedule::*;
-use stf::*;
 use yew::prelude::*;
+
+use crate::schedule::{Dia, Schedule, ScheduleUnity, SigaaTime, Turno};
 
 use super::super::atoms::schedule_unity::UnityComponent;
 

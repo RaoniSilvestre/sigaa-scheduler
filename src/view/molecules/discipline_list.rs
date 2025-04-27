@@ -1,5 +1,6 @@
+use crate::schedule::Disciplina;
+
 use super::super::atoms::discipline::DisciplineButton;
-use class::Disciplina;
 use yew::*;
 
 #[derive(Properties, PartialEq)]

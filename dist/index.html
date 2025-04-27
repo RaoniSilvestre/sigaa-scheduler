@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Agenda Sigaa</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="/sigaa-scheduler/output-c575332f8ecb892f.css"
+      integrity="sha384&#x2D;mhTv8XbIK4OmfawugX3EckDlAJKrz&#x2F;BlzGsczwh8Fnf2iKBRnHP&#x2F;QwuIqX&#x2F;6Cb6Y"
+    />
+    <base href="/sigaa-scheduler/" />
+
+    <link
+      rel="modulepreload"
+      href="/sigaa-scheduler/sigaa-scheduler-1b41d92e0c52b069.js"
+      crossorigin="anonymous"
+      integrity="sha384-/FqvKdz1T/q0t2mHLMLGariHHsv7QKeIiJCfK1KPzUpsb+NbLCcv5nCMkg/mAuEE"
+    />
+    <link
+      rel="preload"
+      href="/sigaa-scheduler/sigaa-scheduler-1b41d92e0c52b069_bg.wasm"
+      crossorigin="anonymous"
+      integrity="sha384-JTdFZkyDnxlXUymGr7PF3moK7IWCkrRPFBGGBuc9LtSFDhDHKkaw6ElrcUNfzrfr"
+      as="fetch"
+      type="application/wasm"
+    />
+  </head>
+
+  <body>
+    <script type="module" nonce="U8GlOlfIoWF/0ecW5kjM0g==">
+      import init, * as bindings from "/sigaa-scheduler/sigaa-scheduler-1b41d92e0c52b069.js";
+      const wasm = await init(
+        "/sigaa-scheduler/sigaa-scheduler-1b41d92e0c52b069_bg.wasm",
+      );
+
+      window.wasmBindings = bindings;
+
+      dispatchEvent(
+        new CustomEvent("TrunkApplicationStarted", { detail: { wasm } }),
+      );
+    </script>
+  </body>
+</html>

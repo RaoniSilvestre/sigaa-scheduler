@@ -1,3 +1,5 @@
+use crate::schedule::{Dia, SigaaTime, Turno};
+
 use super::Disciplina;
 use regex::Regex;
 use std::collections::BTreeSet;

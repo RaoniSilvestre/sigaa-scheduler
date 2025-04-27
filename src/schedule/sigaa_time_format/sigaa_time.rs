@@ -15,13 +15,6 @@ impl SigaaTime {
     /// # Retorno
     ///
     /// Retorna uma nova instância de `SigaaTime` com o `dia` e `turno` fornecidos.
-    ///
-    /// # Exemplo
-    ///
-    /// ```
-    /// use stf::{SigaaTime, HorarioDiurno, Turno, Dia};
-    /// let sigaa_time = SigaaTime::new(Dia::Segunda, Turno::Manhã(HorarioDiurno::Primeiro));
-    /// ```
     pub fn new(dia: Dia, turno: Turno) -> SigaaTime {
         SigaaTime { dia, turno }
     }
@@ -39,16 +32,6 @@ impl SigaaTime {
     /// # Retorno
     ///
     /// Retorna `Ok(SigaaTime)` se a conversão for bem-sucedida, ou um `Err(SigaaTimeErrors)` em caso de falha.
-    ///
-    /// # Exemplo
-    ///
-    /// ```
-    /// use stf::SigaaTime;
-    /// match SigaaTime::new_from_strings("2", "M12") {
-    ///     Ok(sigaa_time) => println!("Horário criado com sucesso: {:?}", sigaa_time),
-    ///     Err(e) => println!("Erro ao criar horário: {:?}", e),
-    /// }
-    /// ```
     pub fn new_from_strings(dia_str: &str, turno_str: &str) -> Result<SigaaTime, SigaaTimeErrors> {
         let dia: Dia = dia_str.try_into()?;
         let turno: Turno = turno_str.try_into()?;

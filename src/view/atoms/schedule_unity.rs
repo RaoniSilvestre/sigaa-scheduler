@@ -1,6 +1,7 @@
-use schedule::ScheduleUnity;
 use yew::*;
 use yew_autoprops::autoprops;
+
+use crate::schedule::ScheduleUnity;
 
 #[autoprops]
 #[function_component]

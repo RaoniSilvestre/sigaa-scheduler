@@ -1,19 +1,14 @@
-use super::{DisciplineWasFound, DisciplineWasFound::*, Schedule, ScheduleError, ScheduleUnity};
-use class::Disciplina;
-use stf::{Dia, SigaaTime, Turno};
+use super::{
+    Dia, Disciplina,
+    DisciplineWasFound::{self, *},
+    Schedule, ScheduleError, ScheduleUnity, SigaaTime, Turno,
+};
 
 impl Schedule {
     /// Cria uma nova instância de `Schedule` com uma matriz de `ScheduleUnity` inicializada.
     ///
     /// A matriz tem 8 linhas e 6 colunas, representando diferentes turnos e dias da semana.
     /// Cada `ScheduleUnity` é inicializado com um horário (`SigaaTime`) e nenhuma disciplina.
-    ///
-    /// # Exemplo
-    ///
-    /// ```
-    /// use schedule::Schedule;
-    /// let schedule = Schedule::new();
-    /// ```
     pub fn new() -> Schedule {
         Schedule((0..8).map(create_row).collect())
     }
@@ -153,4 +148,59 @@ fn create_schedule_unity((row, col): (Turno, Dia)) -> ScheduleUnity {
 
 fn usize_to_turno_dia((row, col): (usize, usize)) -> (Turno, Dia) {
     (row.try_into().unwrap(), col.try_into().unwrap())
+}
+
+#[cfg(test)]
+mod schedule_tests {
+    use crate::schedule::{Disciplina, DisciplineWasFound, Schedule, ScheduleUnity, SigaaTime, SigaaTimeErrors};
+
+    #[test]
+    fn should_create_a_schedule() -> Result<(), SigaaTimeErrors> {
+        let schedule = Schedule::new();
+
+        let sigaa_time = SigaaTime::new_from_strings("2", "M12")?;
+        let sigaa_time_2 = SigaaTime::new_from_strings("3", "M12")?;
+
+        let schedule_unity = ScheduleUnity::new(sigaa_time, None);
+        let schedule_unity_2 = ScheduleUnity::new(sigaa_time_2, None);
+
+        assert_eq!(schedule.get_from_str("2M12"), Some(&schedule_unity));
+        assert_eq!(schedule.get_from_str("3M12"), Some(&schedule_unity_2));
+
+        Ok(())
+    }
+
+    #[test]
+    fn insert_into_schedule_should_return_ok() {
+        let mut schedule = Schedule::new();
+
+        let disciplina_1 = Disciplina::new_stringify("Fundamentos mamáticos da computação I", "246M12").unwrap();
+
+        assert_eq!(schedule.insert(disciplina_1.clone()), Ok(()));
+        assert_eq!(schedule.get_from_str("2M12").unwrap().disciplina, Some(disciplina_1.clone()));
+
+        assert_eq!(schedule.get_from_str("4M12").unwrap().disciplina, Some(disciplina_1.clone()));
+        assert_eq!(schedule.get_from_str("6M12").unwrap().disciplina, Some(disciplina_1))
+    }
+
+    #[test]
+    fn verify_availability_should_return_discipline() {
+        let mut schedule = Schedule::new();
+
+        let disciplina_1 = Disciplina::new_stringify("Fundamentos mamáticos da computação I", "246M12").unwrap();
+
+        schedule.insert(disciplina_1.clone()).unwrap();
+
+        assert_eq!(schedule.verify_availability(&disciplina_1), DisciplineWasFound::DisciplineFound(disciplina_1.clone()));
+    }
+
+    #[test]
+    fn insert_and_remove_from_schedule_should_not_have_discipline() {
+        let mut schedule = Schedule::new();
+
+        let disciplina_1 = Disciplina::new_stringify("Fundamentos mamáticos da computação I", "246M12").unwrap();
+
+        assert_eq!(schedule.insert(disciplina_1.clone()), Ok(()));
+        assert_eq!(schedule.remove(disciplina_1.clone()), Ok(()));
+    }
 }

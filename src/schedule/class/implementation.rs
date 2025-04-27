@@ -1,3 +1,5 @@
+use crate::schedule::SigaaTime;
+
 use super::auxiliary::*;
 use super::{Disciplina, DisciplinaErrors};
 use std::collections::BTreeSet;
