@@ -34,7 +34,7 @@ jobs:
         run: cargo binstall trunk
 
       - name: Build with Trunk
-        run: trunk build --release
+        run: trunk build --release --public-url /sigaa-scheduler/
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
