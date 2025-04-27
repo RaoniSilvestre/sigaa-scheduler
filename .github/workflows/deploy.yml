@@ -1,3 +1,4 @@
+
 name: Deploy Yew App to GitHub Pages
 
 on:
@@ -8,7 +9,6 @@ on:
 permissions:
   id-token: write
   pages: write
-
 
 jobs:
   build:
@@ -36,8 +36,20 @@ jobs:
       - name: Build with Trunk
         run: trunk build --release
 
+      - name: Upload build artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+
