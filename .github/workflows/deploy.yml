@@ -21,8 +21,12 @@ jobs:
       - name: Add wasm target
         run: rustup target add wasm32-unknown-unknown
 
-      - name: Install Trunk
-        run: cargo install trunk wasm-bindgen-cli
+      - name: Install cargo-binstall
+        run: |
+          curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+      - name: Install Trunk with cargo-binstall
+        run: cargo binstall trunk
 
       - name: Build with Trunk
         run: trunk build --release

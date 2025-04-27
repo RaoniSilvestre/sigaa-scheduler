@@ -119,6 +119,7 @@ impl Schedule {
     /// # Retorno
     ///
     /// Retorna uma referência para o `ScheduleUnity` se a for válido, caso contrário, retorna `None`.
+    #[allow(dead_code)]
     pub fn get_from_str(&self, input: &str) -> Option<&ScheduleUnity> {
         let sigaa_time_str: SigaaTime = input.try_into().unwrap();
 
