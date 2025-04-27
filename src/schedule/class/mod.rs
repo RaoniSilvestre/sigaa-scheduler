@@ -1,6 +1,8 @@
+mod auxiliary;
+mod implementation;
+
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
-use stf::SigaaTime;
 
 // Representa uma disciplina no sistema.
 ///
@@ -26,6 +28,3 @@ pub enum DisciplinaErrors {
     /// String de horário não está no formato correto ([2..7][M|T|N][1..6]).
     TimeNotFormatted,
 }
-
-mod auxiliary;
-mod implementation;

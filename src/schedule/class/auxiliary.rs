@@ -2,7 +2,6 @@ use super::Disciplina;
 use regex::Regex;
 use std::collections::BTreeSet;
 use std::ops::Deref;
-use stf::{Dia, SigaaTime, Turno};
 
 #[derive(Debug)]
 enum AuxErrors {
